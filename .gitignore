@@ -1,12 +1,17 @@
-__pycache__/
-*.pyc
+# Python virtual environment
 .venv/
-venv/
+app/.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Pytest
+.pytest_cache/
+
+# Environment files
 .env
-.idea/
+
+# IDE
 .vscode/
-*.log
-terraform/.terraform/
-terraform/*.tfstate
-terraform/*.tfstate.*
-terraform/.terraform.lock.hcl
+.idea/
