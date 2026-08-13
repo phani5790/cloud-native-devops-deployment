@@ -5,17 +5,13 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh '''
-                    pytest app/tests/test_app.py
-                '''
+                sh 'pytest app/tests/test_app.py'
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh '''
-                    docker build -t phanikumard/cloud-native-devops-app:${BUILD_NUMBER} .
-                '''
+                sh 'docker build -t phanikumard/cloud-native-devops-app:${BUILD_NUMBER} .'
             }
         }
 
@@ -35,14 +31,17 @@ pipeline {
             }
         }
 
-        stage('Deploy with Helm') {
+        stage('Deploy to AWS Kubernetes') {
             steps {
                 sh '''
-                    helm upgrade --install cloud-native-devops-app \
-                    helm/cloud-native-devops-app \
-                    --set image.tag=${BUILD_NUMBER}
-
-                    kubectl rollout status deployment/cloud-native-devops-app
+                    ssh -i /root/.ssh/cloud-keypair.pem \
+                        -o StrictHostKeyChecking=no \
+                        ubuntu@3.144.6.205 \
+                        "cd ~/cloud-native-devops-deployment && \
+                         helm upgrade --install cloud-native-devops-app \
+                         helm/cloud-native-devops-app \
+                         --set image.tag=${BUILD_NUMBER} && \
+                         kubectl rollout status deployment/cloud-native-devops-app --timeout=120s"
                 '''
             }
         }
