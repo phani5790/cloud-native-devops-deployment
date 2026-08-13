@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        KUBECONFIG = '/var/jenkins_home/.kube/config'
-        IMAGE_NAME = 'phanikumard/cloud-native-devops-app'
-    }
-
     stages {
 
         stage('Test') {
@@ -19,7 +14,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
-                    docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} .
+                    docker build -t phanikumard/cloud-native-devops-app:${BUILD_NUMBER} .
                 '''
             }
         }
@@ -33,30 +28,21 @@ pipeline {
                 )]) {
                     sh '''
                         echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-                        docker push ${IMAGE_NAME}:${BUILD_NUMBER}
+                        docker push phanikumard/cloud-native-devops-app:${BUILD_NUMBER}
                         docker logout
                     '''
                 }
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('Deploy with Helm') {
             steps {
                 sh '''
-                    kubectl set image deployment/cloud-native-devops-app \
-                    cloud-native-devops-app=${IMAGE_NAME}:${BUILD_NUMBER}
+                    helm upgrade --install cloud-native-devops-app \
+                    helm/cloud-native-devops-app \
+                    --set image.tag=${BUILD_NUMBER}
 
                     kubectl rollout status deployment/cloud-native-devops-app
-                '''
-            }
-        }
-
-        stage('Verify Deployment') {
-            steps {
-                sh '''
-                    kubectl get deployment cloud-native-devops-app
-                    kubectl get pods
-                    kubectl get service cloud-native-devops-app
                 '''
             }
         }

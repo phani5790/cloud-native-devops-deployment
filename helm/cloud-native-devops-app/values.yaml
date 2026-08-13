@@ -1,0 +1,30 @@
+replicaCount: 2
+
+image:
+  repository: phanikumard/cloud-native-devops-app
+  tag: "5"
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 5000
+  targetPort: 5000
+  nodePort: 30080
+
+config:
+  appName: "Cloud Native DevOps Application"
+  environment: "development"
+
+secret:
+  apiKey: "demo-secret-key"
+
+probes:
+  liveness:
+    path: /health
+    initialDelaySeconds: 10
+    periodSeconds: 10
+
+  readiness:
+    path: /health
+    initialDelaySeconds: 5
+    periodSeconds: 5
