@@ -305,6 +305,13 @@ For a larger production environment, Prometheus and Grafana can be added as the 
 
 # ❤️ Health Checks
 
+ https://github.com/phani5790/cloud-native-devops-deployment/blob/59bcc2fc9ce356d7c1f892dd29ec8605cbe4d670/Output/Screenshot%20(17).png
+
+  https://github.com/phani5790/cloud-native-devops-deployment/blob/59bcc2fc9ce356d7c1f892dd29ec8605cbe4d670/Output/Screenshot%20(15).png                  
+
+  https://github.com/phani5790/cloud-native-devops-deployment/blob/59bcc2fc9ce356d7c1f892dd29ec8605cbe4d670/Output/Screenshot%20(13).png  
+  
+
 The Flask application provides a dedicated health endpoint:
 
 ```text
