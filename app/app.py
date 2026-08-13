@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import os
 
 app = Flask(__name__)
@@ -6,11 +6,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return {
-        "application": "Cloud Native DevOps Application",
-        "status": "running",
-        "environment": os.getenv("ENVIRONMENT", "development")
-    }
+    return render_template(
+        "index.html",
+        environment=os.getenv("ENVIRONMENT", "development")
+    )
 
 
 @app.route("/health")

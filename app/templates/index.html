@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Native DevOps Platform</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 25px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: #064e3b;
+            color: #6ee7b7;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #38bdf8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 25px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        .pipeline {
+            margin-top: 35px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .pipeline h2 {
+            margin-bottom: 25px;
+        }
+
+        .flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .step {
+            padding: 12px 18px;
+            background: #1e293b;
+            border: 1px solid #475569;
+            border-radius: 10px;
+            color: #e2e8f0;
+        }
+
+        .arrow {
+            color: #38bdf8;
+            font-size: 20px;
+        }
+
+        .status {
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #064e3b;
+            color: #6ee7b7;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 45px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 34px;
+            }
+
+            .container {
+                padding-top: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <section class="hero">
+            <div class="badge">● Production Deployment Active</div>
+
+            <h1>Cloud Native <span class="highlight">DevOps Platform</span></h1>
+
+            <p>
+                A production-style Flask application deployed on AWS using
+                automated CI/CD, Docker, Kubernetes, Helm and Terraform.
+            </p>
+        </section>
+
+        <section class="grid">
+
+            <div class="card">
+                <div class="icon">☁️</div>
+                <h3>AWS EC2</h3>
+                <p>Application infrastructure hosted on Amazon EC2.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🐳</div>
+                <h3>Docker</h3>
+                <p>Application packaged into a portable container image.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">☸️</div>
+                <h3>Kubernetes</h3>
+                <p>Container workloads orchestrated using K3s Kubernetes.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">⎈</div>
+                <h3>Helm</h3>
+                <p>Kubernetes application deployments managed with Helm charts.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔨</div>
+                <h3>Jenkins CI/CD</h3>
+                <p>Automated build, test, image creation and deployment pipeline.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🏗️</div>
+                <h3>Terraform</h3>
+                <p>AWS infrastructure managed using Infrastructure as Code.</p>
+            </div>
+
+        </section>
+
+        <section class="pipeline">
+            <h2>Automated Deployment Pipeline</h2>
+
+            <div class="flow">
+                <div class="step">GitHub</div>
+                <div class="arrow">→</div>
+                <div class="step">Jenkins</div>
+                <div class="arrow">→</div>
+                <div class="step">Docker</div>
+                <div class="arrow">→</div>
+                <div class="step">Docker Hub</div>
+                <div class="arrow">→</div>
+                <div class="step">Helm</div>
+                <div class="arrow">→</div>
+                <div class="step">Kubernetes</div>
+                <div class="arrow">→</div>
+                <div class="step">AWS</div>
+            </div>
+
+            <div class="status">
+                ✓ Application Healthy • CI/CD Deployment Ready
+            </div>
+        </section>
+
+        <footer>
+            Cloud Native DevOps Project • AWS • Kubernetes • Docker • Jenkins • Terraform
+        </footer>
+
+    </div>
+</body>
+</html>
